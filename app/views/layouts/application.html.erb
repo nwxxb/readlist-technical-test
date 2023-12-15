@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% unless notice.nil? %>
+      <p class="notice"><i class="bi bi-info-square"></i><%= notice %></p>
+    <% end %>
+    <% unless alert.nil? %>
+      <p class="alert"><i class="bi bi-exclamation-circle"></i><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
