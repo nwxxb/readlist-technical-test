@@ -1,0 +1,26 @@
+<h1>Add a new book</h1>
+<%= form_with model: @book do |f| %>
+  <% # TODO: add error massages %>
+  <% # render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author_id %><br />
+    <%= 
+      f.collection_select :author_id, Author.order(:name), :id, :name
+    %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add new book" %>
+  </div>
+<% end %>
