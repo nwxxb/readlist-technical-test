@@ -27,6 +27,7 @@ RSpec.feature "Authentication & Authorization" do
     expect(page).to have_content /sign.+up.+successfully/i
     expect(page).to have_content /welcome.+#{username}/i
     expect(page).to have_selector :link_or_button, "Sign out"
+    expect(page).to have_selector :link_or_button, "Add book"
     expect(page).to have_current_path root_path
   end
 
@@ -41,6 +42,7 @@ RSpec.feature "Authentication & Authorization" do
     expect(page).to have_content /sign.+in.+successfully/i
     expect(page).to have_content /welcome.+#{user.username}/i
     expect(page).to have_selector :link_or_button, "Sign out"
+    expect(page).to have_selector :link_or_button, "Add book"
     expect(page).to have_current_path root_path
 
     click_button "Sign out"
