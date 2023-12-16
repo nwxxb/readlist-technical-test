@@ -1,0 +1,9 @@
+<h1>Your <%= @book.title %> is now added!</h1>
+<p>Hi <%= @user.username %>,</p>
+<p>You've just added "<%= @book.title %>" to your our book list on, It's now listed on our <%= link_to "Book Dashboard", books_url %></p>
+<p>Here's a quick reminder of what you added:</p>
+<ul>
+  <li>Title: <%= @book.title %></li>
+  <li>Author: <%= @book.author.name %></li>
+  <li>Description: <%= @book.description %></li>
+</ul>

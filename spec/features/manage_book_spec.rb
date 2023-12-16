@@ -1,7 +1,9 @@
 require "rails_helper"
 
 RSpec.feature "User can manage book" do
-  scenario "User can create new book" do
+  include ActiveJob::TestHelper
+
+  scenario "User can create new book (and get email notification)" do
     author = create :author, name: "Plato"
 
     sign_in create(:user)
@@ -16,5 +18,8 @@ RSpec.feature "User can manage book" do
     expect(page).to have_content /the.+republic/i
     expect(page).to have_content /a.+philosophy/i
     expect(page).to have_content /Plato/i
+
+    perform_enqueued_jobs
+    expect(UserMailer.deliveries.length).to eq(1)
   end
 end
