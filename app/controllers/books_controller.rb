@@ -4,10 +4,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @authors_count = Author.count
   end
 
   def index_json
-    @books = Book.all
+    @books = Book.includes(:author).all
 
     render json: @books, only: [:id, :title, :description]
   end

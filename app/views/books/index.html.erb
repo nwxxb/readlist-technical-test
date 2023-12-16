@@ -1,30 +1,65 @@
-<h1>Welcome <%= current_user.username %> To Readlist</h1>
-<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-<%= link_to "Add book", new_book_path %>
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <!-- add class active to <a> if you want it to active-->
+        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link active" %></li>
+        <li class="nav-item"><%= link_to "Add book", new_book_path, class: "nav-link" %></li>
+        <li class="nav-item"><a href="#" class="nav-link">Endpoints</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+        <li class="nav-item"><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        
+      </ul>
+    </header>
+</div>
+<main class="container">
+  <h1 class="mt-4">Welcome <%= current_user.username %> To Readlist</h1>
 
-<h2>Books</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @books.each_with_index do |book, idx| %>
-    <tr>
-      <th scope="row"><%= idx + 1 %></th>
-      <td><%= book.title %></td>
-      <td><%= 
-      truncate(
-          book.description, 
-          length: 80,
-          separator: ' '
-        )
-      %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <h2 class="mt-4">Books Table</h2>
+  <div class="row row-cols-1 row-cols-md-2 mt-4 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <p class="my-0 fw-normal">Total Books Count</p>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title"><%= pluralize @books.count, 'book' %></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <p class="my-0 fw-normal">Current Authors Count</p>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title"><%= pluralize @authors_count, 'author' %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  <table class="mt-4 table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @books.each_with_index do |book, idx| %>
+      <tr>
+        <th scope="row"><%= idx + 1 %></th>
+        <td><%= book.title %></td>
+        <td><%= 
+        truncate(
+            book.description, 
+            length: 80,
+            separator: ' '
+          )
+        %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</main>
