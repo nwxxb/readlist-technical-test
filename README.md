@@ -6,8 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+- ruby 3.1.2
 
 * System dependencies
+- redis (6.2.0 or greater)
 
 * Configuration
 

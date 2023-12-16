@@ -19,7 +19,11 @@ RSpec.feature "User can manage book" do
     expect(page).to have_content /a.+philosophy/i
     expect(page).to have_content /Plato/i
 
+    expect(ActiveJob::Base.queue_adapter.enqueued_jobs.length).to eq(1)
+    expect(
+      ActiveJob::Base.queue_adapter.enqueued_jobs.first[:args]).to include("UserMailer", "notify_book_added")
     perform_enqueued_jobs
+    expect(ActiveJob::Base.queue_adapter.enqueued_jobs.length).to eq(0)
     expect(UserMailer.deliveries.length).to eq(1)
   end
 end
