@@ -40,6 +40,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Config for action_mailer
+  config.action_mailer.deliver_later_queue_name = 'mailer'
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true

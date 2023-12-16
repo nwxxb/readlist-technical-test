@@ -21,7 +21,11 @@ RSpec.feature "User can manage book" do
 
     expect(ActiveJob::Base.queue_adapter.enqueued_jobs.length).to eq(1)
     expect(
-      ActiveJob::Base.queue_adapter.enqueued_jobs.first[:args]).to include("UserMailer", "notify_book_added")
+      ActiveJob::Base.queue_adapter.enqueued_jobs.first[:args]
+    ).to include("UserMailer", "notify_book_added")
+    expect(
+      ActiveJob::Base.queue_adapter.enqueued_jobs.first[:queue]
+    ).to eq("mailer")
     perform_enqueued_jobs
     expect(ActiveJob::Base.queue_adapter.enqueued_jobs.length).to eq(0)
     expect(UserMailer.deliveries.length).to eq(1)
