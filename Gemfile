@@ -70,3 +70,4 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
+gem "letter_opener", "~> 1.8"
