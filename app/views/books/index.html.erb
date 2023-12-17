@@ -8,7 +8,7 @@
           <p class="my-0 fw-normal">Total Books Count</p>
         </div>
         <div class="card-body">
-          <p class="card-title h1"><%= pluralize @books.count, 'book' %></p>
+          <p class="card-title h1"><i class="bi bi-book"></i> <%= pluralize @books.count, 'book' %></p>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <p class="my-0 fw-normal">Current Authors Count</p>
         </div>
         <div class="card-body">
-          <p class="card-title h1"><%= pluralize @authors_count, 'author' %></p>
+          <p class="card-title h1"><i class="bi bi-file-earmark-person"></i> <%= pluralize @authors_count, 'author' %></p>
         </div>
       </div>
     </div>
