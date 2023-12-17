@@ -26,11 +26,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    if book.save
-      flash[:notice] = "#{book.title} created successfully"
+    @book = Book.new(book_params)
+    if @book.save
+      flash[:notice] = "#{@book.title} created successfully"
       UserMailer
-        .with(user: current_user, book: book)
+        .with(user: current_user, book: @book)
         .notify_book_added.deliver_later
       redirect_to root_path
     else
