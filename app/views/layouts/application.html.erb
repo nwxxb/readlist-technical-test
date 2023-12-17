@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="h-100">
     <% unless notice.nil? %>
       <p class="notice"><i class="bi bi-info-square"></i><%= notice %></p>
     <% end %>
