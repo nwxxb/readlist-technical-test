@@ -1,16 +1,4 @@
-<div class="container">
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <!-- add class active to <a> if you want it to active-->
-        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link active" %></li>
-        <li class="nav-item"><%= link_to "Add book", new_book_path, class: "nav-link" %></li>
-        <li class="nav-item"><a href="#" class="nav-link">Endpoints</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-        <li class="nav-item"><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-        
-      </ul>
-    </header>
-</div>
+<%= render "application/user_navbar" %>
 <main class="container">
   <h1 class="mt-4">Welcome <%= current_user.username %> To Readlist</h1>
 
