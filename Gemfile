@@ -74,3 +74,5 @@ gem "devise", "~> 4.9"
 gem "letter_opener", "~> 1.8"
 
 gem "sidekiq", "~> 7.2"
+
+gem "kaminari", "~> 1.2"
