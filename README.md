@@ -1,26 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple CRUD system project to manage a database of books and authors.
 
-Things you may want to cover:
-
-* Ruby version
+## System dependencies:
 - ruby 3.1.2
-
-* System dependencies
 - redis (6.2.0 or greater)
 
-* Configuration
+## Start up
+```bash
+# one time
+bundle install
+rails db:create
+rails db:migrate
+# generate books and author
+rails db:seed # please see ./db/seeds.rb
 
-* Database creation
+# boot up server
+rails s 
+# or
+./bin/dev
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# running test
+rspec
+# or specify directory/file/line
+rspec spec/features
+rspec spec/features/models/manage_book_spec.rb
+rspec spec/features/models/manage_book_spec.rb:6
+```
