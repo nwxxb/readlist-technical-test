@@ -1,0 +1,25 @@
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <%= link_to root_path, class: append_class_on_current_links(root_path, "nav-link", add: "active") do %>
+            <i class="bi bi-house-fill"></i> Home
+          <% end %>
+        </li>
+        <li class="nav-item">
+        <%= link_to new_book_path, class: append_class_on_current_links(new_book_path, "nav-link", add: "active") do %>
+              <i class="bi bi-plus-square-fill"></i> Add book
+        <% end %>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="bi bi-person-circle"></i>Profile</a>
+        </li>
+        <li class="nav-item">
+          <%= button_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="bi bi-box-arrow-right"></i> Sign out
+          <% end %>
+        </li>
+        
+      </ul>
+    </header>
+</div>

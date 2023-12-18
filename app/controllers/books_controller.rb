@@ -4,10 +4,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @authors_count = Author.count
   end
 
   def index_json
-    @books = Book.all
+    @books = Book.includes(:author).all
 
     render json: @books, only: [:id, :title, :description]
   end
@@ -25,11 +26,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    if book.save
-      flash[:notice] = "#{book.title} created successfully"
+    @book = Book.new(book_params)
+    if @book.save
+      flash[:notice] = "#{@book.title} created successfully"
       UserMailer
-        .with(user: current_user, book: book)
+        .with(user: current_user, book: @book)
         .notify_book_added.deliver_later
       redirect_to root_path
     else

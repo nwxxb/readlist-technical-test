@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100" data-bs-theme="dark">
   <head>
     <title>Readlist</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,12 +10,18 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="h-100">
     <% unless notice.nil? %>
-      <p class="notice"><i class="bi bi-info-square"></i><%= notice %></p>
+      <p class="notice alert alert-info">
+        <i class="bi bi-info-square"></i>
+        <span class="ml-4"><%= notice %></span>
+      </p>
     <% end %>
     <% unless alert.nil? %>
-      <p class="alert"><i class="bi bi-exclamation-circle"></i><%= alert %></p>
+      <p class="alert alert-warning">
+        <i class="bi bi-exclamation-circle mr-4"></i>
+        <span class="ml-4"><%= alert %></span>
+      </p>
     <% end %>
     <%= yield %>
   </body>
