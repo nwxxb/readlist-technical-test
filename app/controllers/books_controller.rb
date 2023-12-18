@@ -3,12 +3,12 @@ class BooksController < ApplicationController
     only: [:index, :show, :new, :create, :edit]
 
   def index
-    @books = Book.all
+    @books = Book.order(created_at: :desc).page(params[:page]).per(30)
     @authors_count = Author.count
   end
 
   def index_json
-    @books = Book.includes(:author).all
+    @books = Book.includes(:author)
 
     render json: @books, only: [:id, :title, :description, :year_published]
   end

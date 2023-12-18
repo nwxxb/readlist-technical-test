@@ -8,7 +8,7 @@
           <p class="my-0 fw-normal">Total Books Count</p>
         </div>
         <div class="card-body">
-          <p class="card-title h1"><i class="bi bi-book"></i> <%= pluralize @books.count, 'book' %></p>
+          <p class="card-title h1"><i class="bi bi-book"></i> <%= pluralize @books.total_count, 'book' %></p>
         </div>
       </div>
     </div>
@@ -46,11 +46,12 @@
   <table class="mt-4 table table-striped table-hover table-bordered">
     <thead>
       <tr>
-        <th scope="col">id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Year Published</th>
-        <th scope="col">Author</th>
+        <th class="text-center" scope="col">id</th>
+        <th class="text-center" scope="col">Title</th>
+        <th class="text-center" scope="col">Description</th>
+        <th class="text-center" scope="col">Year Published</th>
+        <th class="text-center" scope="col">Author</th>
+        <th class="text-center" scope="col">Created At</th>
       </tr>
     </thead>
     <tbody>
@@ -61,12 +62,16 @@
         <td><%= 
         truncate(
             book.description, 
-            length: 80,
+            length: 50,
             separator: ' '
           )
         %></td>
         <td><%= book.year_published %></td>
         <td><%= book.author.name %></td>
+        <td>
+          <%# book.created_at.strftime('%d %b %Y') %>
+          <%= book.created_at %>
+        </td>
       </tr>
     <% end %>
     </tbody>
@@ -83,4 +88,5 @@
       </div>
     </div>
   <% end %>
+  <%= paginate @books, remote: true, views_prefix: "application" %>
 </main>
