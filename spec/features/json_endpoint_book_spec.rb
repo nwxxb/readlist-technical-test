@@ -11,7 +11,7 @@ RSpec.feature "JSON API for User", type: :request do
     parsed_body = JSON.parse(response.body)
     expect(response).to have_http_status(:ok)
     expect(parsed_body.length).to be(2)
-    expect(parsed_body[0].keys).to eq(["id", "title", "description"])
+    expect(parsed_body[0].keys).to eq(["id", "title", "description", "year_published"])
   end
 
   scenario "User can request see book detail in json format" do
@@ -23,7 +23,7 @@ RSpec.feature "JSON API for User", type: :request do
 
     parsed_body = JSON.parse(response.body)
     expect(response).to have_http_status(:ok)
-    expect(parsed_body.keys).to eq(["id", "title", "description", "author"])
+    expect(parsed_body.keys).to eq(["id", "title","description", "year_published", "author"])
     expect(parsed_body["title"]).to eq(selected_book.title)
     expect(parsed_body["author"]["name"]).to eq(selected_author.name)
   end

@@ -10,15 +10,15 @@ class BooksController < ApplicationController
   def index_json
     @books = Book.includes(:author).all
 
-    render json: @books, only: [:id, :title, :description]
+    render json: @books, only: [:id, :title, :description, :year_published]
   end
 
   def show_json
     @book = Book.includes(:author).find(params[:id])
 
     render json: @book,
-      only: [:id, :title, :description],
-      methods: [:author]
+      only: [:id, :title, :description, :year_published],
+      include: { author: { only: [:id, :name] } }
   end
 
   def new
@@ -40,6 +40,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :description, :author_id)
+    params.require(:book).permit(:title, :description, :year_published, :author_id)
   end
 end

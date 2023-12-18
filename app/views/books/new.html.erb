@@ -15,6 +15,11 @@
     </div>
 
     <div class="field form-floating mt-2">
+      <%= f.select :year_published, (Time.now.year).downto(Time.now.year - 100).to_a, { include_blank: "No year" }, { class: "form-select" } %>
+      <%= f.label :year_published %>
+    </div>
+
+    <div class="field form-floating mt-2">
       <%= 
         f.collection_select :author_id, Author.order(:name), :id, :name, {}, {class: "form-select" }
       %>

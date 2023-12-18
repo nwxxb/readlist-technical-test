@@ -10,6 +10,7 @@ RSpec.feature "User can manage book" do
     visit new_book_path
     fill_in "book_title",       with: "The Republic"
     fill_in "book_description", with: "a philosophy book by Plato"
+    select "1990", from: "book_year_published"
     select "Plato", from: "book[author_id]"
     click_button "Add new book"
 
@@ -17,6 +18,7 @@ RSpec.feature "User can manage book" do
     expect(page).to have_content /the.+republic.+created.+successfully/i
     expect(page).to have_content /the.+republic/i
     expect(page).to have_content /a.+philosophy/i
+    expect(page).to have_content /1990/i
     expect(page).to have_content /Plato/i
 
     expect(ActiveJob::Base.queue_adapter.enqueued_jobs.length).to eq(1)

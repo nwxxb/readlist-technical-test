@@ -49,6 +49,7 @@
         <th scope="col">id</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
+        <th scope="col">Year Published</th>
         <th scope="col">Author</th>
       </tr>
     </thead>
@@ -64,6 +65,7 @@
             separator: ' '
           )
         %></td>
+        <td><%= book.year_published %></td>
         <td><%= book.author.name %></td>
       </tr>
     <% end %>
